@@ -30,7 +30,6 @@ public class ToyRobotImplTest {
         }).isInstanceOf(InvalidPositionException.class)
                 .withFailMessage("X, Y should not be less than 0.");
 
-        //Direction should not be set if position is invalid
         Assert.assertNull(toyRobotImpl.getDirection());
     }
 
@@ -133,20 +132,4 @@ public class ToyRobotImplTest {
         toyRobotImpl.showReport();
     }
 
-    @Test(expected = Test.None.class /* no exception expected */)
-    public void testRunCommand() throws Exception {
-        toyRobotImpl.runCommand("PLACE 0,0,EAST");
-        toyRobotImpl.showReport();
-        toyRobotImpl.runCommand("MOVE");
-        toyRobotImpl.showReport();
-        toyRobotImpl.runCommand("LEFT");
-        toyRobotImpl.runCommand("MOVE");
-        toyRobotImpl.showReport();
-        toyRobotImpl.runCommand("RIGHT");
-        toyRobotImpl.runCommand("MOVE");
-        toyRobotImpl.showReport();
-        Assert.assertEquals(2, toyRobotImpl.getPosX());
-        Assert.assertEquals(1, toyRobotImpl.getPosY());
-        Assert.assertEquals(Direction.EAST, toyRobotImpl.getDirection());
-    }
 }
